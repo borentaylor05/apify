@@ -21,7 +21,9 @@ module Apify
    	def apify_belongs_to(val)
    		newHash = self.attributes
    		val.class.reflect_on_all_associations.each do |a|
-   			newHash[a.name.to_s] = val.send(a.name) if a.class.to_s == BELONGSTO
+        unless @@except.include?(a.name)
+   			  newHash[a.name.to_s] = val.send(a.name) if a.class.to_s == BELONGSTO
+        end
    		end
    		return newHash
    	end
