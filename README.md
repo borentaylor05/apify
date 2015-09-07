@@ -19,7 +19,7 @@ NOTE: All examples assume the following schema:
 ```
 ## Usage
 #### Include Modules
- Include the module in your models to access the apify method.
+ Include the module in **all models you will access via API** to access the apify method.
 ```ruby
     class User < ActiveRecord::Base
 	    include Apify
