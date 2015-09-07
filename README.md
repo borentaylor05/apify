@@ -75,10 +75,10 @@ It works with Collections too!
 ```
 It will also 'climb up' belongs_to relationships. Example:
 ```ruby 
-	# calling Post.first.apify only has one direct association (belongs_to user).
-	# But, user also belongs_to Company.
-	# Apify resolves all belongs_to associations in the chain meaning that the user object 	
-	# returned in Post.first.apify will also contain that user's company object.
+ Post only has one direct association (belongs_to user).
+ But, user also belongs_to Company.
+ Apify resolves all belongs_to associations in the chain meaning that the user object 	
+ returned in Post.first.apify will also contain the posting user's company object.
 ```
 
 ## Fine Tuning
