@@ -5,7 +5,7 @@ Apify is a very small Ruby gem meant to simplify the retrieval of nested objects
 > *** Needs Improvement: This is currently not scalable and is only suitable for development in its current state.  For example, say a user has 1000 posts.  All of those posts will be returned in a call to user.apify.  The next version will set a limit on the number of responses for has many associations.
 
 ## Installation
-  - Add gem to Gemfile
+  Add gem to Gemfile
 ```ruby
     gem 'apify', git: 'git://github.com/borentaylor05/apify.git'
 ```
