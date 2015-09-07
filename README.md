@@ -73,6 +73,14 @@ It works with Collections too!
 ```ruby
     User.all.apify  # this works too!
 ```
+It will also 'climb up' belongs_to relationships. Example:
+```ruby 
+	# calling Post.first.apify only has one direct association (belongs_to user).
+	# But, user also belongs_to Company.
+	# Apify resolves all belongs_to associations in the chain meaning that the user object 	
+	# returned in Post.first.apify will also contain that user's company object.
+```
+
 ## Fine Tuning
 #### Exclude Associations
 To exclude certain associations (e.g. has_many_through tables with only foreign keys), use the **Apify.except** method.
