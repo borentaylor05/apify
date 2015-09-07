@@ -74,7 +74,7 @@ It works with Collections too!
     User.all.apify  # this works too!
 ```
 It will also 'climb up' belongs_to relationships. Example:
-```ruby 
+``` 
  Post only has one direct association (belongs_to user).
  But, user also belongs_to Company.
  Apify resolves all belongs_to associations in the chain meaning that the user object 	
