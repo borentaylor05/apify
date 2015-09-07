@@ -35,10 +35,9 @@ class ApifyTest < ActiveSupport::TestCase
 		assert_equal true, hash.has_key?("posts")
 	end
 
-	test "User instance hash has a collection of posts" do 
+	test "User instance hash has a array of posts" do 
 		hash = User.first.apify
-		puts hash.to_json
-		assert_equal true, hash["posts"].is_a?(ActiveRecord::Associations::CollectionProxy)
+		assert_equal true, hash["posts"].is_a?(Array)
 	end
 
 	test "Post instance hash should return user key" do 
@@ -48,6 +47,7 @@ class ApifyTest < ActiveSupport::TestCase
 
 	test "Post instance hash should return user hash with company key" do 
 		hash = Post.first.apify		
+		puts hash
 		assert_equal true, hash["user"].has_key?("company")
 	end
 
