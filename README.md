@@ -2,6 +2,8 @@
 
 Apify is a very small Ruby gem meant to simplify the retrieval of nested objects for use in JSON APIs.  
 
+> *** Needs Improvement: This is currently not scalable and is only suitable for development in its current state.  For example, say a user has 1000 posts.  All of those posts will be returned in a call to user.apify.  The next version will set a limit on the number of responses for has many associations.
+
 ## Installation
   - Add gem to Gemfile
 ```ruby
@@ -9,7 +11,7 @@ Apify is a very small Ruby gem meant to simplify the retrieval of nested objects
 ```
 ## Usage
 #### Include Modules
- Include the module in your models to access the apify method
+ Include the module in your models to access the apify method.
 ```ruby
     class User < ActiveRecord::Base
 	    include Apify
@@ -17,7 +19,7 @@ Apify is a very small Ruby gem meant to simplify the retrieval of nested objects
     	has_many :posts
     end
 ```
- Optional: Include ApifyRespond module in ApplicationController
+ Optional: Include ApifyRespond module in ApplicationController.
 ```ruby
     class ApplicationController < ActionController::Base
 	    include ApifyRespond
@@ -26,14 +28,14 @@ Apify is a very small Ruby gem meant to simplify the retrieval of nested objects
     end
 ```
 #### Using the Methods
- Call the method from a controller
+ Call the method from a controller.
 ```ruby
     def get_user
         respond({ status: 200, user: User.first.apify })
     end
 ```
   The apify method resolves all associations for that model and returns the objects / collections as hashes. Without the apify method, the call above only returns a foreign key value for company and no mention of posts.
-  **The above call to respond returns the following JSON object** 
+  **The above call to respond returns the following JSON object**.
 ```json
 // DB Schema:
 // Company has_many users 
@@ -41,8 +43,8 @@ Apify is a very small Ruby gem meant to simplify the retrieval of nested objects
 // User has_many posts
 // Post belongs_to user
 {
-    status: 200,
-    user: {  
+    "status": 200,
+    "user": {  
        "id":1,
        "name":"Its Me",
        "company_id":1,

@@ -27,7 +27,6 @@ class ApifyTest < ActiveSupport::TestCase
 
 	test "User instance hash contains a Company with a name" do 
 		hash = User.first.apify
-		puts hash.to_json	
 		assert_equal false, hash["company"]["name"].nil?
 	end
 
@@ -63,6 +62,12 @@ class ApifyTest < ActiveSupport::TestCase
 
 	test "array responds to apify method" do 
 		assert_equal true, User.all.respond_to?("apify") 
+	end
+
+	test "should return array with proper count" do 
+		count = User.all.count
+		hash_array = User.all.apify
+		assert_equal count, hash_array.count
 	end
 
 end
