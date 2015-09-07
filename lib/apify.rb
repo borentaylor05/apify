@@ -1,5 +1,6 @@
 
 require 'apify/core_ext'
+require 'apify/apify_respond'
 
 module Apify
 	BELONGSTO = "ActiveRecord::Reflection::BelongsToReflection"
@@ -34,11 +35,11 @@ module Apify
    	end
 
   	def self.except(*e)
-    	@@except = e
+        e.each { |exc| @@except.push exc }
   	end
 
     def self.blacklist(*b)
-        @@blacklist = b
+        b.each { |bl| @@blacklist.push bl }
     end
   
 end

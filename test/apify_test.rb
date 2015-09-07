@@ -26,7 +26,8 @@ class ApifyTest < ActiveSupport::TestCase
 	end
 
 	test "User instance hash contains a Company with a name" do 
-		hash = User.first.apify		
+		hash = User.first.apify
+		puts hash.to_json	
 		assert_equal false, hash["company"]["name"].nil?
 	end
 
@@ -47,7 +48,6 @@ class ApifyTest < ActiveSupport::TestCase
 
 	test "Post instance hash should return user hash with company key" do 
 		hash = Post.first.apify		
-		puts hash
 		assert_equal true, hash["user"].has_key?("company")
 	end
 
