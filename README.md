@@ -19,7 +19,7 @@ NOTE: All examples assume the following schema:
 ```
 ## Usage
 #### Include Modules
- Include the module in **all models you will access via API** to access the apify method.
+ To access the apify method, include the module in **all models you will access via API**.
 ```ruby
     class User < ActiveRecord::Base
 	    include Apify
@@ -27,7 +27,8 @@ NOTE: All examples assume the following schema:
     	has_many :posts
     end
 ```
- Optional: Include ApifyRespond module in ApplicationController.
+ Optional(but highly recommended): 
+ Include ApifyRespond module in ApplicationController.
 ```ruby
     class ApplicationController < ActionController::Base
 	    include ApifyRespond
@@ -39,6 +40,7 @@ NOTE: All examples assume the following schema:
  Call the method from a controller.
 ```ruby
     def get_user
+    	# this one line sends a JSON user object back to the client
         respond({ status: 200, user: User.first.apify })
     end
 ```
@@ -84,12 +86,12 @@ To exclude certain associations (e.g. has_many_through tables with only foreign 
 ```
 
 #### Exclude (Blacklist) Attributes
-To exclude or blacklist certain attributes from ever being returned in a response, use the **Apify.blacklist** method.
+To exclude or blacklist certain attributes from ever being returned in a response, use the **Apify.blacklist** method.  You should use this for sensitive information like passwords or private user data.
 ```ruby
     class User < ActiveRecord::Base
     	include Apify
     	# note :created_at is not in the above response
-    	Apify.blacklist :created_at	
+    	Apify.blacklist :created_at, :password	
     	belongs_to :company
     	has_many :posts
     end
