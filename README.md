@@ -6,7 +6,6 @@ Apify is a very small Ruby gem meant to simplify the retrieval of nested objects
 
 ```
 NOTE: All examples assume the following schema:
- - DB Schema:
  - Company has_many users 
  - User belongs_to a company
  - User has_many posts
